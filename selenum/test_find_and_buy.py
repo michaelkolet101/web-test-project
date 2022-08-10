@@ -107,6 +107,7 @@ def buy_the_dress(driver, minimum_price):
             assert 'Your order on My Store is complete.' in end_msg.text
             break
 
+
 def test_get_min_drees():
     driver = webdriver.Chrome(chrom_driver_path, chrome_options=chrome_options)
     driver.maximize_window()
