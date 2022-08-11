@@ -61,13 +61,13 @@ def buy_the_dress(driver, minimum_price):
             buy_block = columns_container.find_element(By.ID, 'buy_block')
             submit = buy_block.find_element(By.NAME, 'Submit')
             submit.click()
-            time.sleep(10)
+            time.sleep(3)
 
             layer_cart_cart = driver.find_element(By.CLASS_NAME, "layer_cart_cart")
             button_container = layer_cart_cart.find_element(By.CLASS_NAME, "button-container")
             btn = button_container.find_element(By.CLASS_NAME, "button-medium")
             btn.click()
-            time.sleep(10)
+            time.sleep(3)
 
             standard_checkout_1 = driver.find_element(By.CLASS_NAME, 'standard-checkout')
             logging.info('standard_checkout_1')
@@ -114,13 +114,13 @@ def test_get_min_drees():
     driver.get('http://automationpractice.com/index.php')
 
     login_to_acoount(driver)
-    time.sleep(10)
+    time.sleep(3)
 
     search_box = driver.find_element(By.ID, "search_query_top")
     search_box.send_keys("summer")
     search_btn = driver.find_element(By.NAME, "submit_search")
     search_btn.click()
-    time.sleep(10)
+    time.sleep(3)
 
     search_result_header = driver.find_element(By.CSS_SELECTOR, "#center_column>h1")
     logging.info(search_result_header.text)
