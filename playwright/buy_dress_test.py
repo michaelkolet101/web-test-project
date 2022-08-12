@@ -32,22 +32,31 @@ def test_buy_dress():
         search_btn = page.wait_for_selector(".button-search")
         search_btn.click()
 
-# TODO
+        search_result_header = page.wait_for_selector("#center_column > h1 > span.lighter")
+        print(f'the res is: {search_result_header.inner_text()}')
+        logging.info(search_result_header.inner_text())
+        assert 'SUMMER' in search_result_header.inner_text()
+
         # find the dress
+        product_list = page.query_selector_all(".product-container")
+        price_list = []
+        for product in product_list:
+            price = product.query_selector(".product-price").text_content().strip()
+            price_list.append(float(price[1::]))
 
+        print(price_list)
+        minimum = str(min(price_list))
+        print(minimum)
 
-        # product_containers = product_list.wait_for_selector(".product-container")
-        # logging.info(product_containers.inner_html())
-        # print(product_containers.inner_html())
-        # list_price = []
-        minimum_price = 0
+        dress = page.locator(f'test={str(minimum)}')
+        dress.click()
 
-        # for product_container in product_containers:
-        #     right_block = product_container.wait_for_selector(".right-block")
-        #     price = right_block.wait_for_selector(".product-price").text
-        #     list_price.append((price[1::]))
-        # minimum_price = min(list_price)
-        # logging.info(minimum_price)
+        #price_list[cheapes]
+        # print(price_list[cheapes].inner_html())
+        # page.wait_for_timeout(3)
+        # check_out_btn_1 = page.wait_for_selector('.button-medium')
+        # check_out_btn_1.click()
+
 
         page.wait_for_timeout(10000)
         browser.close()
